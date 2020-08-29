@@ -58,6 +58,7 @@ const player = () => css`
     }
   }
   .rhap_progress-container {
+    width: 30%;
     &:focus {
       outline: none;
     }
@@ -76,6 +77,21 @@ const player = () => css`
   .rhap_volume-bar {
     background-color: #fff;
   }
+  @media (max-width: 1200px) {
+    .rhap_progress-container {
+      width: 15%;
+    }
+  }
+  @media (max-width: 992px) {
+    .rhap_progress-container {
+      width: 50%;
+    }
+  @media (max-width: 500px) {
+    .rhap_progress-container {
+      width: 28%;
+    }
+  }
+}
 `
 
 class Player extends React.Component {

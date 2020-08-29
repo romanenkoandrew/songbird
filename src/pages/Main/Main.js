@@ -3,6 +3,7 @@ import { css } from "@emotion/core";
 import Block from "components/Block";
 import Header from "components/Header/Header";
 import RandomBird from "components/RandomBird";
+import AnswerBlock from "components/AnswerBlock";
 
 const container = () => css`
   height: 100vh;
@@ -28,6 +29,7 @@ class Main extends React.Component {
         {/* <Block />; */}
         <Header />
         <RandomBird />
+        <AnswerBlock />
       </div>
     )
   }
