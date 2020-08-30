@@ -89,6 +89,7 @@ class AnswerBlock extends React.Component {
     });
   }
   render() {
+    console.log(this.props)
     return (
       <div css={answerContainer}>
         <ul css={listItems} onClick={this.handleAnswerBlock}>

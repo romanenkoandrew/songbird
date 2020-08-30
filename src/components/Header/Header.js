@@ -24,17 +24,15 @@ const header_tabs = () => css`
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  li {
-    padding: 0.5rem;
-    flex: auto;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    .active {
-      background-color: red;
-    }
-  }
 `;
+const tab = (active) => () => css`
+  padding: 0.5rem;
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  ${active ? 'background-color: red' : ''}
+  `;
 
 class Header extends React.Component {
   render() {
@@ -47,7 +45,7 @@ class Header extends React.Component {
         <ul css={header_tabs}>
           {tabsNameData.map(el => {
             return (
-            <li key={el.toString()}>{el}</li>
+            <li key={el.toString()} css={tab(Number(el) === this.props.activeTab)}>{el}</li>
             )
           })}
         </ul>
