@@ -1,8 +1,18 @@
-import { activeTabSelector, defaultDescriptionSelector, birdPositionSelector } from 'selectors'
-import {createStructuredSelector} from 'reselect'
+import {
+  activeTabSelector,
+  defaultDescriptionSelector,
+  birdPositionSelector,
+  correctAnswerIDSelector,
+  buttonDisabledSelector,
+  wasCorrectAnswerSelector,
+} from "selectors";
+import { createStructuredSelector } from "reselect";
 
 export default createStructuredSelector({
   activeTab: activeTabSelector,
   defaultDescription: defaultDescriptionSelector,
   birdPosition: birdPositionSelector,
-})
+  correctAnswerID: correctAnswerIDSelector,
+  buttonDisabled: buttonDisabledSelector,
+  wasCorrectAnswer: wasCorrectAnswerSelector,
+});

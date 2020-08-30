@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "@emotion/core";
 import Block from "components/Block";
-import Header from "components/Header/Header";
+import Header from "components/Header";
 import RandomBird from "components/RandomBird";
 import AnswerBlock from "components/AnswerBlock";
 

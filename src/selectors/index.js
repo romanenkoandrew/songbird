@@ -8,3 +8,6 @@ export const titleSelector = createSelector(mainSelector, main => main.title);
 export const activeTabSelector = createSelector(mainSelector, main => main.activeTab);
 export const defaultDescriptionSelector = createSelector(mainSelector, main => main.defaultDescription);
 export const birdPositionSelector = createSelector(mainSelector, main => main.birdPosition);
+export const correctAnswerIDSelector = createSelector(mainSelector, main => main.correctAnswerID);
+export const wasCorrectAnswerSelector = createSelector(mainSelector, main => main.wasCorrectAnswer);
+export const buttonDisabledSelector = createSelector(mainSelector, main => main.buttonDisabled);

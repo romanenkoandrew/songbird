@@ -1,22 +1,21 @@
 import React from "react";
 import { css } from "@emotion/core";
-import Player from "components/Player";
 import BirdDescription from "components/BirdDescription";
 import birdsData from "data/birdsData";
 
-const button = () => css`
+const button = (disabled) => css`
   width: 100%;
   padding: 0.5rem;
   margin: 1.5rem 0;
   border-radius: 3px;
-  background-color: #00bc8c;
+  background-color: ${disabled ? '#303030' : '#00bc8c'};
   cursor: pointer;
   outline: none;
-  border: none;
+  border: ${disabled ? '1px solid #555' : 'none'} ;
   color: #fff;
   transition: 0.3s;
   &:hover {
-    background-color: #00efb2;
+    background-color: ${disabled ? '' : '#00efb2'};
   }
 `;
 const answerContainer = () => css`
@@ -57,6 +56,14 @@ const listItems = () => css`
     flex: 0 0 100%;
   }
 `;
+// const listItemsSpan = (value) => css `
+//     display: inline-block;
+//     width: 10px;
+//     height: 10px;
+//     border-radius: 50%;
+//     background-color: #444;
+//     margin-right: 1rem;
+// `
 const description = () => css`
   max-width: 50%;
   flex: 0 0 48%;
@@ -72,24 +79,32 @@ const description = () => css`
 `;
 
 class AnswerBlock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleButton = this.handleButton.bind(this);
-    this.handleAnswerBlock = this.handleAnswerBlock.bind(this);
+  componentDidMount() {
+    this.createCorrectAnswer()
   }
-
-  handleButton() {
+  handleButton = () => {
     this.props.changeActiveTab({ activeTab: this.props.activeTab });
     this.props.changeDefaultDescription({ defaultDescription: true });
-  }
-  handleAnswerBlock(e) {
+    this.props.changeBirdPosition({ birdPosition: null });
+    this.props.changeWasCorrectAnswer({wasCorrectAnswer: false})
+    this.props.changeButtonDisabled({buttonDisabled: true})
+    this.createCorrectAnswer()
+  };
+  handleAnswerBlock = (e) => {
     this.props.changeDefaultDescription({ defaultDescription: false });
     this.props.changeBirdPosition({
       birdPosition: Number(e.target.dataset.id),
     });
-  }
+    if (Number(e.target.dataset.id) === this.props.correctAnswerID) {
+      this.props.changeWasCorrectAnswer({ wasCorrectAnswer: true})
+      this.props.changeButtonDisabled({buttonDisabled: false})
+    }
+  };
+  createCorrectAnswer = () => {
+    this.props.setCorrectAnswerID({ correctAnswerID: birdsData[this.props.activeTab].map(e=>e).sort(() => Math.random() - 0.5)[0].id})
+  };
+
   render() {
-    console.log(this.props)
     return (
       <div css={answerContainer}>
         <ul css={listItems} onClick={this.handleAnswerBlock}>
@@ -105,7 +120,7 @@ class AnswerBlock extends React.Component {
         <div css={description}>
           <BirdDescription />
         </div>
-        <button css={button} onClick={this.handleButton}>
+        <button css={button(this.props.buttonDisabled)} onClick={this.handleButton} disabled={this.props.buttonDisabled}>
           {" "}
           Next Level
         </button>

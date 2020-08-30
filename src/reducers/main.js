@@ -6,6 +6,9 @@ export const initialState = {
   defaultDescription: true,
   activeTab: 0,
   birdPosition: null,
+  correctAnswerID: null,
+  wasCorrectAnswer: false,
+  buttonDisabled: true,
 }
 
 export default function (state = initialState, { type, payload }) {
@@ -30,6 +33,18 @@ export default function (state = initialState, { type, payload }) {
     case ActionTypes.BIRD_POSITION: {
       const birdPosition = get(payload, 'birdPosition')
       return { ...state, birdPosition }
+    }
+    case ActionTypes.CORRECT_ANSWER_ID: {
+      const correctAnswerID = get(payload, 'correctAnswerID')
+      return { ...state, correctAnswerID }
+    }
+    case ActionTypes.WAS_CORRECT_ANSWER: {
+      const wasCorrectAnswer = get(payload, 'wasCorrectAnswer')
+      return { ...state, wasCorrectAnswer }
+    }
+    case ActionTypes.BUTTON_DISABLED: {
+      const buttonDisabled = get(payload, 'buttonDisabled')
+      return { ...state, buttonDisabled }
     }
 
 

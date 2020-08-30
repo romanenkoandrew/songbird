@@ -14,7 +14,7 @@ const header = () => css`
 const header_image = () => css`
   width: 200px;
   height: 50px;
-`
+`;
 const header_tabs = () => css`
   width: 100%;
   background-color: #008966;
@@ -31,25 +31,48 @@ const tab = (active) => () => css`
   display: flex;
   justify-content: center;
   list-style: none;
-  ${active ? 'background-color: red' : ''}
-  `;
+  &:first-of-type {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  &:last-of-type {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  background-color: ${active ?  '#00bc8c' : ''};
+  @media (max-width: 720px) {
+    &:first-of-type {
+      border-bottom-left-radius: 0;
+    }
+    &:last-of-type {
+      border-bottom-left-radius: 5px;
+      border-top-right-radius: 0;
+    }
+  }
+  @media (max-width: 525px) {
+    &:last-of-type {
+      border-bottom-left-radius: 0;
+    }
+  }
+`;
 
 class Header extends React.Component {
   render() {
     return (
       <>
         <div css={header}>
-          <img css={header_image} src='./assets/image/logo.svg' alt='img'/>
+          <img css={header_image} src="./assets/image/logo.svg" alt="img" />
           <div>Score:</div>
         </div>
         <ul css={header_tabs}>
-          {tabsNameData.map(el => {
+          {tabsNameData.map((el, index) => {
             return (
-            <li key={el.toString()} css={tab(Number(el) === this.props.activeTab)}>{el}</li>
-            )
+              <li key={el.toString()} css={tab(index === this.props.activeTab)}>
+                {el}
+              </li>
+            );
           })}
         </ul>
-        
       </>
     );
   }
