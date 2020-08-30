@@ -8,14 +8,14 @@ const button = (disabled) => css`
   padding: 0.5rem;
   margin: 1.5rem 0;
   border-radius: 3px;
-  background-color: ${disabled ? '#303030' : '#00bc8c'};
+  background-color: ${disabled ? "#303030" : "#00bc8c"};
   cursor: pointer;
   outline: none;
-  border: ${disabled ? '1px solid #555' : 'none'} ;
+  border: ${disabled ? "1px solid #555" : "none"};
   color: #fff;
   transition: 0.3s;
   &:hover {
-    background-color: ${disabled ? '' : '#00efb2'};
+    background-color: ${disabled ? "" : "#00efb2"};
   }
 `;
 const answerContainer = () => css`
@@ -34,14 +34,6 @@ const listItems = () => css`
   border: 1px solid #555;
   border-radius: 5px;
   cursor: pointer;
-  span {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #444;
-    margin-right: 1rem;
-  }
   li {
     padding: 1rem;
     &:not(:last-child) {
@@ -56,14 +48,20 @@ const listItems = () => css`
     flex: 0 0 100%;
   }
 `;
-// const listItemsSpan = (value) => css `
-//     display: inline-block;
-//     width: 10px;
-//     height: 10px;
-//     border-radius: 50%;
-//     background-color: #444;
-//     margin-right: 1rem;
-// `
+const listItemsSpan = () => css`
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #444;
+  margin-right: 1rem;
+`;
+const wrong = () => css`
+  background-color: red;
+`;
+const correct = () => css`
+  background-color: #00bc8c;
+`;
 const description = () => css`
   max-width: 50%;
   flex: 0 0 48%;
@@ -79,32 +77,56 @@ const description = () => css`
 `;
 
 class AnswerBlock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { pressedTabs: [] };
+  }
   handleButton = () => {
     this.props.changeActiveTab({ activeTab: this.props.activeTab });
     this.props.changeDefaultDescription({ defaultDescription: true });
     this.props.changeBirdPosition({ birdPosition: null });
-    this.props.changeWasCorrectAnswer({wasCorrectAnswer: false})
-    this.props.changeButtonDisabled({buttonDisabled: true})
-    this.props.setLevelScore({levelScore: 6})
-    this.createCorrectAnswer()
+    this.props.changeWasCorrectAnswer({ wasCorrectAnswer: false });
+    this.props.changeButtonDisabled({ buttonDisabled: true });
+    this.props.setLevelScore({ levelScore: 6 });
+    this.setState({ pressedTabs: [] });
+    this.createCorrectAnswer();
   };
   handleAnswerBlock = (e) => {
     this.props.changeDefaultDescription({ defaultDescription: false });
     this.props.changeBirdPosition({
       birdPosition: Number(e.target.dataset.id),
     });
-    if (Number(e.target.dataset.id) === this.props.correctAnswerID) {
-      this.props.changeWasCorrectAnswer({ wasCorrectAnswer: true})
-      this.props.changeButtonDisabled({buttonDisabled: false})
-      this.props.setGameScore({gameScore: Number(this.props.gameScore + this.props.levelScore)})
-    } else {
-      this.props.setLevelScore({levelScore: this.props.levelScore})
+
+    if (!this.state.pressedTabs.includes(Number(e.target.dataset.id))) {
+      this.setState({
+        pressedTabs: this.state.pressedTabs.concat(Number(e.target.dataset.id)),
+      });
+      if (Number(e.target.dataset.id) === this.props.correctAnswerID) {
+        this.props.changeWasCorrectAnswer({ wasCorrectAnswer: true });
+        this.props.changeButtonDisabled({ buttonDisabled: false });
+        this.props.setGameScore({
+          gameScore: Number(this.props.gameScore + this.props.levelScore),
+        });
+      }
+      this.props.setLevelScore({ levelScore: this.props.levelScore });
     }
   };
   createCorrectAnswer = () => {
-    this.props.setCorrectAnswerID({ correctAnswerID: birdsData[this.props.activeTab].map(e=>e).sort(() => Math.random() - 0.5)[0].id})
+    this.props.setCorrectAnswerID({
+      correctAnswerID: birdsData[this.props.activeTab].map(e=>e).sort(() => Math.random() - 0.5)[0].id,
+    });
   };
-
+  checkAnswer = (id) => {
+    const styles = [listItemsSpan()];
+    if (this.state.pressedTabs.includes(id) ) {
+      if (Number(id) === this.props.correctAnswerID) {
+        styles.push(correct());
+      } else {
+        styles.push(wrong());
+      }
+    }
+    return () => styles;
+  };
   render() {
     return (
       <div css={answerContainer}>
@@ -112,7 +134,7 @@ class AnswerBlock extends React.Component {
           {birdsData[this.props.activeTab].map((el) => {
             return (
               <li key={el.name.toString()} data-id={el.id}>
-                <span />
+                <span css={this.checkAnswer(el.id)} />
                 {el.name.toString()}
               </li>
             );
@@ -121,7 +143,11 @@ class AnswerBlock extends React.Component {
         <div css={description}>
           <BirdDescription />
         </div>
-        <button css={button(this.props.buttonDisabled)} onClick={this.handleButton} disabled={this.props.buttonDisabled}>
+        <button
+          css={button(this.props.buttonDisabled)}
+          onClick={this.handleButton}
+          disabled={this.props.buttonDisabled}
+        >
           {" "}
           Next Level
         </button>

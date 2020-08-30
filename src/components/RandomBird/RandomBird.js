@@ -47,17 +47,13 @@ const randomBird_name = () => css`
 `
 
 class RandomBird extends React.Component {
-  // componentDidUpdate() {
-  //   console.log(birdsData[this.props.activeTab][this.props.correctAnswerID-1])
-  // }
   render() {
-      console.log(birdsData[this.props.activeTab][this.props.correctAnswerID-1])
     return (
       <div css={randomBird_container}>
         <img css={randomBird_image}  alt='img' src='./assets/image/defaultBird.jpg' />
         <div css={randomBird}> 
-          <div css={randomBird_name}> Birds name</div>
-          <Player src={birdsData[this.props.activeTab][this.props.correctAnswerID-1]} />
+          {/* <div css={randomBird_name}>{this.props.wasCorrectAnswer ? birdsData[this.props.activeTab][this.props.correctAnswerID-1] : '******' }</div> */}
+          <Player src={birdsData[this.props.activeTab][this.props.correctAnswerID-1]?.audio} />
         </div>
       </div>
     );
