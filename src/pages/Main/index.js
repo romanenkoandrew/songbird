@@ -1,11 +1,11 @@
 import Main from './Main'
-import { setToStore, changeTitle } from 'actions'
+import { setCorrectAnswerID, changeActiveTab } from 'actions'
 import { connect } from 'react-redux';
 import selector from './selector'
 
 const mapDispatchToProps = {
-  setToStore,
-  changeTitle
+  setCorrectAnswerID,
+  changeActiveTab,
 }
 
 export default connect(selector, mapDispatchToProps)(Main)

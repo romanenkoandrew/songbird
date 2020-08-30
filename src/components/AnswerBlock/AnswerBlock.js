@@ -79,9 +79,6 @@ const description = () => css`
 `;
 
 class AnswerBlock extends React.Component {
-  componentDidMount() {
-    this.createCorrectAnswer()
-  }
   handleButton = () => {
     this.props.changeActiveTab({ activeTab: this.props.activeTab });
     this.props.changeDefaultDescription({ defaultDescription: true });

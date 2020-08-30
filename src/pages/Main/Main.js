@@ -1,9 +1,9 @@
 import React from "react";
 import { css } from "@emotion/core";
-import Block from "components/Block";
 import Header from "components/Header";
 import RandomBird from "components/RandomBird";
 import AnswerBlock from "components/AnswerBlock";
+import birdsData from "data/birdsData";
 
 const container = () => css`
   height: 100vh;
@@ -23,10 +23,13 @@ const container = () => css`
 `
 
 class Main extends React.Component {
+  componentDidMount() {
+    this.props.changeActiveTab({activeTab: -1})
+    this.props.setCorrectAnswerID({ correctAnswerID: birdsData[0].map(e=>e).sort(() => Math.random() - 0.5)[0].id})
+  }
   render() {
     return (
       <div css={container}> 
-        {/* <Block />; */}
         <Header />
         <RandomBird />
         <AnswerBlock />

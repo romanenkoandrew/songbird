@@ -51,12 +51,13 @@ class RandomBird extends React.Component {
   //   console.log(birdsData[this.props.activeTab][this.props.correctAnswerID-1])
   // }
   render() {
+      console.log(birdsData[this.props.activeTab][this.props.correctAnswerID-1])
     return (
       <div css={randomBird_container}>
         <img css={randomBird_image}  alt='img' src='./assets/image/defaultBird.jpg' />
         <div css={randomBird}> 
           <div css={randomBird_name}> Birds name</div>
-          <Player src='https://www.xeno-canto.org/sounds/uploaded/WIPMNWUHXI/XC421078-Zwooi(j)_Karula_20180612_1656.mp3' />
+          <Player src={birdsData[this.props.activeTab][this.props.correctAnswerID-1]} />
         </div>
       </div>
     );

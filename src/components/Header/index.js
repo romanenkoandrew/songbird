@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import selector from './selector';
 
 const mapDispatchToProps = {
-  changeActiveTab
+  changeActiveTab,
+
 }
 
 export default connect(selector, mapDispatchToProps)(Header)
