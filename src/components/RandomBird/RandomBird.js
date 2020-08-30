@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/core";
 import Player from "components/Player";
+import birdsData from "data/birdsData";
 
 const randomBird_container = () => css`
   width: 100%;
@@ -46,13 +47,16 @@ const randomBird_name = () => css`
 `
 
 class RandomBird extends React.Component {
+  // componentDidUpdate() {
+  //   console.log(birdsData[this.props.activeTab][this.props.correctAnswerID-1])
+  // }
   render() {
     return (
       <div css={randomBird_container}>
         <img css={randomBird_image}  alt='img' src='./assets/image/defaultBird.jpg' />
         <div css={randomBird}> 
           <div css={randomBird_name}> Birds name</div>
-          <Player src={'https://www.xeno-canto.org/sounds/uploaded/BLMSIUFTFU/XC512582-190604_1087_Grus_tok.mp3'} />
+          <Player src='https://www.xeno-canto.org/sounds/uploaded/WIPMNWUHXI/XC421078-Zwooi(j)_Karula_20180612_1656.mp3' />
         </div>
       </div>
     );

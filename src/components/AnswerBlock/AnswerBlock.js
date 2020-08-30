@@ -88,6 +88,7 @@ class AnswerBlock extends React.Component {
     this.props.changeBirdPosition({ birdPosition: null });
     this.props.changeWasCorrectAnswer({wasCorrectAnswer: false})
     this.props.changeButtonDisabled({buttonDisabled: true})
+    this.props.setLevelScore({levelScore: 6})
     this.createCorrectAnswer()
   };
   handleAnswerBlock = (e) => {
@@ -98,6 +99,9 @@ class AnswerBlock extends React.Component {
     if (Number(e.target.dataset.id) === this.props.correctAnswerID) {
       this.props.changeWasCorrectAnswer({ wasCorrectAnswer: true})
       this.props.changeButtonDisabled({buttonDisabled: false})
+      this.props.setGameScore({gameScore: Number(this.props.gameScore + this.props.levelScore)})
+    } else {
+      this.props.setLevelScore({levelScore: this.props.levelScore})
     }
   };
   createCorrectAnswer = () => {

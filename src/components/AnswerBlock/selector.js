@@ -5,6 +5,8 @@ import {
   correctAnswerIDSelector,
   buttonDisabledSelector,
   wasCorrectAnswerSelector,
+  gameScoreSelector,
+  levelScoreSelector,
 } from "selectors";
 import { createStructuredSelector } from "reselect";
 
@@ -15,4 +17,6 @@ export default createStructuredSelector({
   correctAnswerID: correctAnswerIDSelector,
   buttonDisabled: buttonDisabledSelector,
   wasCorrectAnswer: wasCorrectAnswerSelector,
+  gameScore: gameScoreSelector,
+  levelScore: levelScoreSelector,
 });

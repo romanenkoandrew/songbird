@@ -11,3 +11,5 @@ export const birdPositionSelector = createSelector(mainSelector, main => main.bi
 export const correctAnswerIDSelector = createSelector(mainSelector, main => main.correctAnswerID);
 export const wasCorrectAnswerSelector = createSelector(mainSelector, main => main.wasCorrectAnswer);
 export const buttonDisabledSelector = createSelector(mainSelector, main => main.buttonDisabled);
+export const gameScoreSelector = createSelector(mainSelector, main => main.gameScore);
+export const levelScoreSelector = createSelector(mainSelector, main => main.levelScore);

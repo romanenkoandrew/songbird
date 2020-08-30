@@ -6,6 +6,8 @@ import {
   setCorrectAnswerID,
   changeWasCorrectAnswer,
   changeButtonDisabled,
+  setGameScore,
+  setLevelScore,
 } from "actions";
 import { connect } from "react-redux";
 import selector from "./selector";
@@ -17,6 +19,8 @@ const mapDispatchToProps = {
   setCorrectAnswerID,
   changeWasCorrectAnswer,
   changeButtonDisabled,
+  setGameScore,
+  setLevelScore,
 };
 
 export default connect(selector, mapDispatchToProps)(AnswerBlock);

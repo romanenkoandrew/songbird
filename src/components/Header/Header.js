@@ -62,7 +62,7 @@ class Header extends React.Component {
       <>
         <div css={header}>
           <img css={header_image} src="./assets/image/logo.svg" alt="img" />
-          <div>Score:</div>
+          <div>Score: {this.props.gameScore}</div>
         </div>
         <ul css={header_tabs}>
           {tabsNameData.map((el, index) => {

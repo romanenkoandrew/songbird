@@ -9,6 +9,8 @@ export const initialState = {
   correctAnswerID: null,
   wasCorrectAnswer: false,
   buttonDisabled: true,
+  gameScore: 0,
+  levelScore: 5,
 }
 
 export default function (state = initialState, { type, payload }) {
@@ -45,6 +47,16 @@ export default function (state = initialState, { type, payload }) {
     case ActionTypes.BUTTON_DISABLED: {
       const buttonDisabled = get(payload, 'buttonDisabled')
       return { ...state, buttonDisabled }
+    }
+    case ActionTypes.GAME_SCORE: {
+      const gameScore = get(payload, 'gameScore')
+      return { ...state, gameScore }
+    }
+    case ActionTypes.LEVEL_SCORE: {
+      let levelScore = get(payload, 'levelScore')
+      levelScore -= 1
+      if(levelScore < 0) levelScore = 0
+      return { ...state, levelScore }
     }
 
 
