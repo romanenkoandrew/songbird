@@ -5,7 +5,6 @@ import selector from './selector';
 
 const mapDispatchToProps = {
   changeActiveTab,
-
 }
 
 export default connect(selector, mapDispatchToProps)(Header)
