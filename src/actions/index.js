@@ -9,3 +9,4 @@ export const changeWasCorrectAnswer = createAction(ActionTypes.WAS_CORRECT_ANSWE
 export const changeButtonDisabled = createAction(ActionTypes.BUTTON_DISABLED)
 export const setGameScore = createAction(ActionTypes.GAME_SCORE)
 export const setLevelScore = createAction(ActionTypes.LEVEL_SCORE)
+export const showFinalWindow = createAction(ActionTypes.FINAL_WINDOW)

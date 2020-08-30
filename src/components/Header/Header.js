@@ -1,6 +1,6 @@
-import React from "react";
-import { css } from "@emotion/core";
-import tabsNameData from "data/tabsNameData";
+import React from 'react';
+import { css } from '@emotion/core';
+import tabsNameData from 'data/tabsNameData';
 
 const header = () => css`
   width: 100%;
@@ -56,12 +56,12 @@ const tab = (active) => () => css`
   }
 `;
 
-class Header extends React.Component {
+class Header extends React.PureComponent {
   render() {
     return (
       <>
         <div css={header}>
-          <img css={header_image} src="./assets/image/logo.svg" alt="img" />
+          <img css={header_image} src='./assets/image/logo.svg' alt='img' />
           <div>Score: {this.props.gameScore}</div>
         </div>
         <ul css={header_tabs}>

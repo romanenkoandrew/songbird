@@ -4,6 +4,7 @@ import Header from "components/Header";
 import RandomBird from "components/RandomBird";
 import AnswerBlock from "components/AnswerBlock";
 import birdsData from "data/birdsData";
+import FinalWindow from "components/FinalWindow";
 
 const container = () => css`
   height: 100vh;
@@ -28,11 +29,19 @@ class Main extends React.Component {
     this.props.setCorrectAnswerID({ correctAnswerID: birdsData[0].map(e=>e).sort(() => Math.random() - 0.5)[0].id})
   }
   render() {
+    console.log('correct answer is number: ', this.props.correctAnswerID)
     return (
       <div css={container}> 
         <Header />
         <RandomBird />
         <AnswerBlock />
+        {/* {this.props.openFinalWindow ? 
+        <FinalWindow /> : 
+        <>
+          <RandomBird />
+          <AnswerBlock />
+        </> } */}
+        
       </div>
     )
   }

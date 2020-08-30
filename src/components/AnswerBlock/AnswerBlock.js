@@ -1,7 +1,7 @@
-import React from "react";
-import { css } from "@emotion/core";
-import BirdDescription from "components/BirdDescription";
-import birdsData from "data/birdsData";
+import React from 'react';
+import { css } from '@emotion/core';
+import BirdDescription from 'components/BirdDescription';
+import birdsData from 'data/birdsData';
 
 const button = (disabled) => css`
   width: 100%;
@@ -27,7 +27,7 @@ const answerContainer = () => css`
 `;
 const listItems = () => css`
   max-width: 50%;
-  max-height: 330px;
+  max-height: 320px;
   flex: 0 0 48%;
   list-style: none;
   background-color: #303030;
@@ -76,7 +76,7 @@ const description = () => css`
   }
 `;
 
-class AnswerBlock extends React.Component {
+class AnswerBlock extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { pressedTabs: [] };
@@ -90,6 +90,7 @@ class AnswerBlock extends React.Component {
     this.props.setLevelScore({ levelScore: 6 });
     this.setState({ pressedTabs: [] });
     this.createCorrectAnswer();
+    this.finalWindow();
   };
   handleAnswerBlock = (e) => {
     this.props.changeDefaultDescription({ defaultDescription: false });
@@ -127,6 +128,10 @@ class AnswerBlock extends React.Component {
     }
     return () => styles;
   };
+  finalWindow = () => {
+    // if (this.props.activeTab === 5) this.props.showFinalWindow({finalWindow: true})
+    if (this.props.activeTab === 5) window.location.reload(); 
+  }
   render() {
     return (
       <div css={answerContainer}>

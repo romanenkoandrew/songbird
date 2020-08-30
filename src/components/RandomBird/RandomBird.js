@@ -1,7 +1,7 @@
-import React from "react";
-import { css } from "@emotion/core";
-import Player from "components/Player";
-import birdsData from "data/birdsData";
+import React from 'react';
+import { css } from '@emotion/core';
+import Player from 'components/Player';
+import birdsData from 'data/birdsData';
 
 const randomBird_container = () => css`
   width: 100%;
@@ -46,7 +46,7 @@ const randomBird_name = () => css`
   }
 `
 
-class RandomBird extends React.Component {
+class RandomBird extends React.PureComponent {
   render() {
     const defaultImage = './assets/image/defaultBird.jpg';
     return (

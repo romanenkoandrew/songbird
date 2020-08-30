@@ -11,3 +11,4 @@ export const wasCorrectAnswerSelector = createSelector(mainSelector, main => mai
 export const buttonDisabledSelector = createSelector(mainSelector, main => main.buttonDisabled);
 export const gameScoreSelector = createSelector(mainSelector, main => main.gameScore);
 export const levelScoreSelector = createSelector(mainSelector, main => main.levelScore);
+export const openFinalWindowSelector = createSelector(mainSelector, main => main.openFinalWindow);

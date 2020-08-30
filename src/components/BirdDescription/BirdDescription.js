@@ -1,7 +1,7 @@
-import React from "react";
-import { css } from "@emotion/core";
-import Player from "components/Player";
-import birdsData from "data/birdsData";
+import React from 'react';
+import { css } from '@emotion/core';
+import Player from 'components/Player';
+import birdsData from 'data/birdsData';
 
 const birdDescription_container = () => css`
   width: 100%;
@@ -61,7 +61,7 @@ const birdDescription_descr = () => css`
   padding: 0.5rem 1rem;
 `;
 
-class BirdDescription extends React.Component {
+class BirdDescription extends React.PureComponent {
   render() {
     const { defaultDescription, birdPosition, activeTab } = this.props;
     if (defaultDescription) {
@@ -72,7 +72,7 @@ class BirdDescription extends React.Component {
           <div css={birdDescription_container}>
             <img
               css={birdDescription_image}
-              alt="img"
+              alt='img'
               src={birdsData[activeTab][birdPosition-1].image}
             />
             <div css={birdDescription}>

@@ -7,8 +7,8 @@ import {
   wasCorrectAnswerSelector,
   gameScoreSelector,
   levelScoreSelector,
-} from "selectors";
-import { createStructuredSelector } from "reselect";
+} from 'selectors';
+import { createStructuredSelector } from 'reselect';
 
 export default createStructuredSelector({
   activeTab: activeTabSelector,

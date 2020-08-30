@@ -1,7 +1,7 @@
-import React from "react";
-import { css } from "@emotion/core";
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
+import React from 'react';
+import { css } from '@emotion/core';
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 const player = () => css`
   .rhap_time {
@@ -94,13 +94,13 @@ const player = () => css`
   }
 `;
 
-class Player extends React.Component {
+class Player extends React.PureComponent {
   render() {
     return (
       <div css={player}>
         <AudioPlayer
           src={this.props.src}
-          layout="horizontal-reverse"
+          layout='horizontal-reverse'
           showJumpControls={false}
           customAdditionalControls={[]}
         />

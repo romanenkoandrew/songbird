@@ -11,6 +11,7 @@ export const initialState = {
   buttonDisabled: true,
   gameScore: 0,
   levelScore: 5,
+  openFinalWindow: false,
 }
 
 export default function (state = initialState, { type, payload }) {
@@ -57,6 +58,10 @@ export default function (state = initialState, { type, payload }) {
       levelScore -= 1
       if(levelScore < 0) levelScore = 0
       return { ...state, levelScore }
+    }
+    case ActionTypes.FINAL_WINDOW: {
+      const openFinalWindow = get(payload, 'openFinalWindow')
+      return { ...state, openFinalWindow }
     }
 
 

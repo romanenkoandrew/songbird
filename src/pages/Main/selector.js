@@ -1,7 +1,7 @@
-import { correctAnswerIDSelector, activeTabSelector } from 'selectors'
+import { correctAnswerIDSelector, openFinalWindowSelector } from 'selectors'
 import {createStructuredSelector} from 'reselect'
 
 export default createStructuredSelector({
   correctAnswerID: correctAnswerIDSelector,
-  activeTab: activeTabSelector
+  openFinalWindow: openFinalWindowSelector,
 })
