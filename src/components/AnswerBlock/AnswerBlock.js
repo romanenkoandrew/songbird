@@ -2,11 +2,12 @@ import React from "react";
 import { css } from "@emotion/core";
 import Player from "components/Player";
 import BirdDescription from "components/BirdDescription";
+import birdsData from "data/birdsData";
 
 const button = () => css`
   width: 100%;
   padding: 0.5rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
   border-radius: 3px;
   background-color: #00bc8c;
   cursor: pointer;
@@ -27,7 +28,7 @@ const answerContainer = () => css`
 `;
 const listItems = () => css`
   max-width: 50%;
-  max-height: 310px;
+  max-height: 330px;
   flex: 0 0 48%;
   list-style: none;
   background-color: #303030;
@@ -68,43 +69,46 @@ const description = () => css`
     max-width: 100%;
     flex: 0 0 100%;
   }
-`
+`;
 
 class AnswerBlock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleButton = this.handleButton.bind(this);
+    this.handleAnswerBlock = this.handleAnswerBlock.bind(this);
+  }
+
+  handleButton() {
+    this.props.changeActiveTab({ activeTab: this.props.activeTab });
+    this.props.changeDefaultDescription({ defaultDescription: true });
+  }
+  handleAnswerBlock(e) {
+    this.props.changeDefaultDescription({ defaultDescription: false });
+    this.props.changeBirdPosition({
+      birdPosition: Number(e.target.dataset.id),
+    });
+  }
   render() {
     return (
-        <div css={answerContainer}>
-          <ul css={listItems}>
-            <li>
-              <span />
-              Птица 1
-            </li>
-            <li>
-              <span />
-              Птица 2
-            </li>
-            <li>
-              <span />
-              Птица 3
-            </li>
-            <li>
-              <span />
-              Птица 4
-            </li>
-            <li>
-              <span />
-              Птица 5
-            </li>
-            <li>
-              <span />
-              Птица 6
-            </li>
-          </ul>
-          <div css={description}> 
-            <BirdDescription  />
-          </div>
-          <button css={button}> Next Level</button>
+      <div css={answerContainer}>
+        <ul css={listItems} onClick={this.handleAnswerBlock}>
+          {birdsData[this.props.activeTab].map((el) => {
+            return (
+              <li key={el.name.toString()} data-id={el.id}>
+                <span />
+                {el.name.toString()}
+              </li>
+            );
+          })}
+        </ul>
+        <div css={description}>
+          <BirdDescription />
         </div>
+        <button css={button} onClick={this.handleButton}>
+          {" "}
+          Next Level
+        </button>
+      </div>
     );
   }
 }

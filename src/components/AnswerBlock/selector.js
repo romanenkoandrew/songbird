@@ -1,6 +1,8 @@
-import { openSelector } from 'selectors'
+import { activeTabSelector, defaultDescriptionSelector, birdPositionSelector } from 'selectors'
 import {createStructuredSelector} from 'reselect'
 
 export default createStructuredSelector({
-  open: openSelector
+  activeTab: activeTabSelector,
+  defaultDescription: defaultDescriptionSelector,
+  birdPosition: birdPositionSelector,
 })

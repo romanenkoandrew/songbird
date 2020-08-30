@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/core";
 import Player from "components/Player";
+import birdsData from "data/birdsData";
 
 const birdDescription_container = () => css`
   width: 100%;
@@ -19,6 +20,9 @@ const birdDescription_container = () => css`
     justify-content: center;
   }
 `;
+const birdsDefaultDescription = () => css `
+  padding: 1rem;
+`;
 
 const birdDescription_image = () => css`
   width: 200px;
@@ -28,6 +32,7 @@ const birdDescription_image = () => css`
 `;
 const birdDescription = () => css`
   margin-right: 2.3rem;
+  margin-bottom: 1rem;
   height: 150px;
   width: 80%;
   @media (max-width: 720px) {
@@ -53,37 +58,37 @@ const birdDescription_nameEng = () => css`
 `;
 const birdDescription_descr = () => css`
   font-size: 1rem;
-  padding: 0.5rem 1rem; 
+  padding: 0.5rem 1rem;
 `;
 
 class BirdDescription extends React.Component {
   render() {
-    return (
-      <>
-        <div css={birdDescription_container}>
-          <img
-            css={birdDescription_image}
-            alt="img"
-            src="./assets/image/defaultBird.jpg"
-          />
-          <div css={birdDescription}>
-            <div css={birdDescription_name}> Birds name</div>
-            <div css={birdDescription_nameEng}> Birds name Eng</div>
-            <Player
-              src={
-                "https://www.xeno-canto.org/sounds/uploaded/BLMSIUFTFU/XC512582-190604_1087_Grus_tok.mp3"
-              }
+    const { defaultDescription, birdPosition, activeTab } = this.props;
+    if (defaultDescription) {
+      return <div css={birdsDefaultDescription}>Послушайте плеер. <br/> Выберите птицу из списка </div>;
+    } else {
+      return (
+        <>
+          <div css={birdDescription_container}>
+            <img
+              css={birdDescription_image}
+              alt="img"
+              src={birdsData[activeTab][birdPosition-1].image}
             />
+            <div css={birdDescription}>
+              <div css={birdDescription_name}>{birdsData[activeTab][birdPosition-1].name}</div>
+              <div css={birdDescription_nameEng}>{birdsData[activeTab][birdPosition-1].species}</div>
+              <Player
+                src={birdsData[activeTab][birdPosition-1].audio}
+              />
+            </div>
           </div>
-        </div>
-        <div css={birdDescription_descr}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-          commodi officiis iure ut incidunt in, distinctio ea temporibus,
-          repellendus porro harum aut illum deserunt deleniti aliquam iste
-          maiores odio sint.
-        </div>
-      </>
-    );
+          <div css={birdDescription_descr}>
+          {birdsData[activeTab][birdPosition-1].description}
+          </div>
+        </>
+      );
+    }
   }
 }
 

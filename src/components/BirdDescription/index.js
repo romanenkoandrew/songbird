@@ -1,10 +1,11 @@
 import BirdDescription from './BirdDescription';
-import { setToStore } from 'actions';
+import { changeDefaultDescription, changeBirdPosition } from 'actions';
 import { connect } from 'react-redux';
 import selector from './selector';
 
 const mapDispatchToProps = {
-  setToStore
+  changeDefaultDescription,
+  changeBirdPosition,
 }
 
 export default connect(selector, mapDispatchToProps)(BirdDescription)

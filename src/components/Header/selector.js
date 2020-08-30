@@ -1,6 +1,6 @@
-import { openSelector } from 'selectors'
+import { activeTabSelector } from 'selectors'
 import {createStructuredSelector} from 'reselect'
 
 export default createStructuredSelector({
-  open: openSelector
+  activeTab: activeTabSelector
 })

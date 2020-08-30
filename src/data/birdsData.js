@@ -23,7 +23,7 @@ const birdsData = [
         species: 'Hydrocoloeus minutus',
         description: 'Гнездящийся, перелётный и транзитно мигрирующий вид. Распространена на всей территории Беларуси, но везде встречается мозаично и неравномерно. Гнездится также мозаично, часто меняя места колоний. Основные места гнездования располагаются на севере и юге страны. Современная численность оценивается в 1000—2000 пар. Численность может значительно меняться, вплоть до отсутствия на гнездовании в отдельные годы.',
         image: 'https://live.staticflickr.com/65535/50083811837_cb136c03b5.jpg',
-        audio: 'www.xeno-canto.org/sounds/uploaded/RLRHCUIPIY/XC456604-mewa%20ma%C5%82a%20Mikoszewo.mp3'
+        audio: 'https://www.xeno-canto.org/sounds/uploaded/MMEJYLOPDO/XC473234-Dv%C3%A4rgm%C3%A5s_03.mp3'
       },   
       {
         id: 4,
@@ -31,7 +31,7 @@ const birdsData = [
         species: 'Anser erythropus',
         description: 'Мигрирующий через территорию страны вид. Спорадически встречается во время миграций в разных регионах Беларуси — Жабинковском, Любанском, Смолевичском, Шарковщинском районах, а также в Беловежской пуще. Чаще встречается на весеннем пролёте в пойме Припяти. В Беларуси вид отмечается не ежегодно и всегда в небольших количествах.',
         image: 'https://live.staticflickr.com/65535/50140098581_4134aba292.jpg',
-        audio: 'www.xeno-canto.org/sounds/uploaded/FASQYEAHBS/ansery.mp3'
+        audio: 'https://www.xeno-canto.org/sounds/uploaded/MMEJYLOPDO/XC564388-Fj%C3%A4llg%C3%A5s_03.mp3'
       },
       {
         id: 5,
@@ -257,7 +257,7 @@ const birdsData = [
     ],
   // попугаи
     [
-       {
+      {
         id: 1,
         name: 'Корелла',
         species: 'Nymphicus hollandicus',

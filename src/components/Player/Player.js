@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "@emotion/core";
-import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/lib/styles.css';
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 
 const player = () => css`
   .rhap_time {
@@ -48,7 +48,7 @@ const player = () => css`
       background-color: #00bc8c;
     }
   }
-  .rhap_volume-button{
+  .rhap_volume-button {
     color: #008966;
     &:focus {
       outline: none;
@@ -71,7 +71,7 @@ const player = () => css`
   .rhap_download-progress {
     background-color: #868686;
   }
-  .rhap_progress-filled{
+  .rhap_progress-filled {
     background-color: #fff;
   }
   .rhap_volume-bar {
@@ -86,19 +86,24 @@ const player = () => css`
     .rhap_progress-container {
       width: 50%;
     }
-  @media (max-width: 500px) {
-    .rhap_progress-container {
-      width: 28%;
+    @media (max-width: 500px) {
+      .rhap_progress-container {
+        width: 28%;
+      }
     }
   }
-}
-`
+`;
 
 class Player extends React.Component {
   render() {
     return (
       <div css={player}>
-        <AudioPlayer src={this.props.src}  layout='horizontal-reverse' showJumpControls={false} customAdditionalControls={[]}  />
+        <AudioPlayer
+          src={this.props.src}
+          layout="horizontal-reverse"
+          showJumpControls={false}
+          customAdditionalControls={[]}
+        />
       </div>
     );
   }
